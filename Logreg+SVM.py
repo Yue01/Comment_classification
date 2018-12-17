@@ -1,6 +1,3 @@
-# The codes are tested based on ipython notebook with Python 3.5
-# -*- Group 666 ， Final Project-*-
-# ComSci 273A， Fall 2018， University of California， Irvine
 
 import pandas as pd
 import numpy as np
