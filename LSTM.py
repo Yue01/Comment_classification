@@ -1,7 +1,4 @@
 
-# -*- Group 666 ， Final Project-*-
-# ComSci 273A， Fall 2018， University of California， Irvine
-
 """
 Reason why choosing CNN+ LSTM:
 1. We used well-pre-trained embedding from Stanford based on large quantity of language materials.
