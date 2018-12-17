@@ -1,6 +1,6 @@
 
 """
-Reason why choosing CNN+ LSTM:
+Reason why choosing LSTM:
 1. We used well-pre-trained embedding from Stanford based on large quantity of language materials.
 2. CNN has good performance in analyzing sentences after all the words have been transformed into vectors. The partial
 properties of a sentence can be well extracted by CNN.
