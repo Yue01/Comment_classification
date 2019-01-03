@@ -150,12 +150,11 @@ x_train, x_val, y_train, y_val = train_test_split(train_X, train_y, test_size=0.
 # model building
 inp = Input(shape=(150,))
 x = Embedding(5000, 300, weights=[embedding_matrix])(inp)
-# dropout系数可调
+
 x = SpatialDropout1D(0.35)(x)
 h = Bidirectional(LSTM(128, return_sequences=True, dropout=0.15, recurrent_dropout=0.15))(x)
 
-# 这里我自己也有疑点，这个是有个人写的教程我拿来用的，TimeDistributed具体作用不太清楚
-# 后面的网格结构应该没什么要改的，效果还行
+
 u = TimeDistributed(Dense(128, activation='relu', use_bias=False))(h)
 alpha = TimeDistributed(Dense(1, activation='relu'))(u)
 x = Reshape((150,))(alpha)
@@ -165,12 +164,12 @@ x = Multiply()([h, x])
 x = Lambda(lambda x: be.sum(x, axis=1))(x)
 x = Dense(64, activation="relu")(x)
 x = Dropout(0.2)(x)
-# 输出层是6，总共有6类的分类
+
 
 x = Dense(6, activation="sigmoid")(x)
 model = Model(inputs=inp, outputs=x)
 
-# 优化方法： adam， sgd， RMS_prop
+
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 model.summary()
 
